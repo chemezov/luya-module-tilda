@@ -1,5 +1,5 @@
 {
-    "name": "chemezov/luya-tilda-module",
+    "name": "chemezov/luya-module-tilda",
     "description": "LUYA module with Tilda block",
     "type": "yii2-extension",
     "keywords": [
