@@ -81,7 +81,15 @@ class TildaAssetService extends BaseObject
         return $bundle;
     }
 
-    protected function generateAsset(string $path, string $baseUrl, ExportedPage|ExportedProject $object): TildaAsset
+    /**
+     * @param string $path
+     * @param string $baseUrl
+     * @param ExportedPage|ExportedProject $object
+     * @return TildaAsset
+     * @throws DownloadAssetException
+     * @throws \yii\base\Exception
+     */
+    protected function generateAsset(string $path, string $baseUrl, $object): TildaAsset
     {
         // Build bundle
         $bundle = new TildaAsset();

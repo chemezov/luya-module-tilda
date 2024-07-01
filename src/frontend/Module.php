@@ -48,7 +48,10 @@ class Module extends \luya\base\Module
 
     public string $blockGroup = ProjectGroup::class;
 
-    public array|string $defaultBlockCssClasses = [];
+    /**
+     * @var array|string
+     */
+    public $defaultBlockCssClasses = [];
 
     /**
      * Tilda files will be loaded to this path. Path must be accessible via web request.
