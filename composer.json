@@ -19,7 +19,10 @@
         }
     ],
     "require": {
+        "php": ">=7.4",
         "yiisoft/yii2": "~2.0.0",
+        "luyadev/luya-core" : "*",
+        "luyadev/luya-module-cms": "*",
         "tilda-tools/tilda-php": "^0.0.4"
     },
     "autoload": {
