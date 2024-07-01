@@ -2,7 +2,7 @@
 
 namespace chemezov\luya\tilda\frontend\commands;
 
-use chemezov\luya\tilda\admin\Module;
+use chemezov\luya\tilda\frontend\Module;
 use luya\console\Command;
 use luya\helpers\ArrayHelper;
 use TildaTools\Tilda\TildaApi;

@@ -146,7 +146,14 @@ class TildaBlock extends PhpBlock
         return '<h5 class="mb-3">Tilda Block</h5>' .
             '<table class="table table-bordered">' .
             '{% if vars.code is not empty %}' .
-            '<tr><td><b>Page</b></td><td>{{extras.pageTitle}}</td></tr>' .
+            '<thead>' .
+            '<tr><th>Page</th><th>Page ID</th><th>Project ID</th></tr>' .
+            '</thead>' .
+            '<tr>' .
+            '<td>{{extras.pageTitle}}</td>' .
+            '<td>{{extras.pageId}}</td>' .
+            '<td>{{extras.projectId}}</td>' .
+            '</tr>' .
             '{% endif %}' .
             '</table>';
     }

@@ -11,6 +11,7 @@ use yii\base\Application;
 use yii\base\InvalidConfigException;
 use yii\caching\Cache;
 use yii\di\Instance;
+use yii\queue\Queue;
 
 /**
  * Tilda Frontend Module.
@@ -23,13 +24,18 @@ use yii\di\Instance;
 class Module extends \luya\base\Module
 {
     public array $urlRules = [
-        'tilda' => 'tilda/default/index',
+        'tilda/webhook' => 'tilda/tilda/webhook',
     ];
 
     /**
      * @var Cache|array|string the Cache object or the application component ID.
      */
     public $cache = 'cache';
+
+    /**
+     * @var Queue|array|string the Queue object or the application component ID.
+     */
+    public $queue = 'adminqueue';
 
     /**
      * @var string Tilda public key.
@@ -80,6 +86,7 @@ class Module extends \luya\base\Module
 
         // Prepare properties
         $this->cache = Instance::ensure($this->cache, Cache::class);
+        $this->queue = Instance::ensure($this->queue, Queue::class);
 
         // Check configuration
         if (!isset($this->publicKey) || !isset($this->secretKey)) {

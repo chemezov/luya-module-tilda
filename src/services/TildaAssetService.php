@@ -4,6 +4,7 @@ namespace chemezov\luya\tilda\services;
 
 use chemezov\luya\tilda\assets\TildaAsset;
 use chemezov\luya\tilda\base\DownloadAssetException;
+use chemezov\luya\tilda\helpers\TildaCacheHelper;
 use luya\helpers\FileHelper;
 use TildaTools\Tilda\Objects\Page\ExportedPage;
 use TildaTools\Tilda\Objects\Project\ExportedProject;
@@ -33,7 +34,7 @@ class TildaAssetService extends BaseObject
 
     public function getProjectAsset(int $projectId): TildaAsset
     {
-        $cacheKey = ['tilda_project_asset', 'project_id' => $projectId];
+        $cacheKey = TildaCacheHelper::getProjectAssetCacheKey($projectId);
 
         return $this->cache->getOrSet($cacheKey, function () use ($projectId) {
             return $this->generateProjectAsset($projectId);
@@ -42,7 +43,7 @@ class TildaAssetService extends BaseObject
 
     public function getPageAsset(int $pageId): TildaAsset
     {
-        $cacheKey = ['tilda_page_asset', 'page_id' => $pageId];
+        $cacheKey = TildaCacheHelper::getPageAssetCacheKey($pageId);
 
         return $this->cache->getOrSet($cacheKey, function () use ($pageId) {
             return $this->generatePageAsset($pageId);
@@ -51,7 +52,7 @@ class TildaAssetService extends BaseObject
 
     public function generateProjectAsset(int $projectId): TildaAsset
     {
-        $cacheKey = ['tilda_project_asset', 'project_id' => $projectId];
+        $cacheKey = TildaCacheHelper::getProjectAssetCacheKey($projectId);
 
         $assetPath = $this->getProjectAssetPath($projectId);
         $assetUrl = $this->getProjectAssetUrl($projectId);
@@ -66,7 +67,7 @@ class TildaAssetService extends BaseObject
 
     public function generatePageAsset(int $pageId): TildaAsset
     {
-        $cacheKey = ['tilda_page_asset', 'page_id' => $pageId];
+        $cacheKey = TildaCacheHelper::getPageAssetCacheKey($pageId);
 
         $page = $this->service->getPageExport($pageId);
         $projectId = $page->projectid;

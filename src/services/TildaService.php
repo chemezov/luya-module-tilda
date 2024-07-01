@@ -2,7 +2,7 @@
 
 namespace chemezov\luya\tilda\services;
 
-use chemezov\luya\tilda\frontend\Module;
+use chemezov\luya\tilda\helpers\TildaCacheHelper;
 use luya\helpers\ArrayHelper;
 use TildaTools\Tilda\Objects\Page\ExportedPage;
 use TildaTools\Tilda\Objects\Project\ExportedProject;
@@ -31,7 +31,7 @@ class TildaService extends BaseObject
 
     public function getProjectList(): array
     {
-        $cacheKey = 'tilda_project_list';
+        $cacheKey = TildaCacheHelper::getProjectListCacheKey();
 
         return $this->cache->getOrSet($cacheKey, function () {
             $data = $this->api->getProjectsList();
@@ -42,7 +42,7 @@ class TildaService extends BaseObject
 
     public function getPageList(int $projectId): array
     {
-        $cacheKey = ['tilda_page_list', 'project_id' => $projectId];
+        $cacheKey = TildaCacheHelper::getPageListCacheKey($projectId);
 
         return $this->cache->getOrSet($cacheKey, function () use ($projectId) {
             $data = $this->api->getPagesList($projectId);
@@ -53,7 +53,7 @@ class TildaService extends BaseObject
 
     public function getPageExport(int $pageId): ExportedPage
     {
-        $cacheKey = ['tilda_page_export', 'page_id' => $pageId];
+        $cacheKey = TildaCacheHelper::getPageExportCacheKey($pageId);
 
         return $this->cache->getOrSet($cacheKey, function () use ($pageId) {
             return $this->api->getPageExport($pageId);
@@ -62,7 +62,7 @@ class TildaService extends BaseObject
 
     public function getProjectExport(int $projectId): ExportedProject
     {
-        $cacheKey = ['tilda_project_export', 'project_id' => $projectId];
+        $cacheKey = TildaCacheHelper::getProjectExportCacheKey($projectId);
 
         return $this->cache->getOrSet($cacheKey, function () use ($projectId) {
             return $this->api->getProjectExport($projectId);
