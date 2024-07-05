@@ -4,11 +4,11 @@ namespace chemezov\luya\tilda\frontend\blockgroups;
 
 use luya\cms\base\BlockGroup;
 
-class TildaBlockGroup extends BlockGroup
+class TildaGroup extends BlockGroup
 {
     public function identifier()
     {
-        return 'tilda-block-group';
+        return 'tilda-group';
     }
 
     public function label()
@@ -18,6 +18,6 @@ class TildaBlockGroup extends BlockGroup
 
     public function getPosition()
     {
-        return 1;
+        return 100;
     }
 }

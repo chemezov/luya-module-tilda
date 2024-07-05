@@ -2,9 +2,9 @@
 
 namespace chemezov\luya\tilda\frontend;
 
+use chemezov\luya\tilda\frontend\blockgroups\TildaGroup;
 use chemezov\luya\tilda\services\TildaAssetService;
 use chemezov\luya\tilda\services\TildaService;
-use luya\cms\frontend\blockgroups\ProjectGroup;
 use TildaTools\Tilda\TildaApi;
 use Yii;
 use yii\base\Application;
@@ -52,7 +52,7 @@ class Module extends \luya\base\Module
      */
     public array $projectIds = [];
 
-    public string $blockGroup = ProjectGroup::class;
+    public string $blockGroup = TildaGroup::class;
 
     /**
      * @var array|string
