@@ -70,7 +70,7 @@ Make sure you have correct write permissions to `assetsPath` and `assetsUrl` can
 Also make sure that the `queue` is started via cron.
 
 ```shell
-* * * * * cd /path/to/www ./luya queue/run -v
+* * * * * cd /path/to/www && ./luya queue/run -v
 ```
 
 This is necessary when reloading resources via the webhook.
