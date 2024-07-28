@@ -24,10 +24,12 @@ if (!empty($projectId) && !empty($pageId)) {
         echo Html::beginTag('div', ['class' => $cssClasses]);
     }
 
+    echo Html::beginTag('div', ['class' => 'tilda-inner-container']);
     echo TildaWidget::widget([
         'projectId' => $projectId,
         'pageId' => $pageId,
     ]);
+    echo Html::endTag('div');
 
     if ($outputContainer) {
         echo Html::endTag('div');
