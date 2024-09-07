@@ -4,6 +4,7 @@ namespace chemezov\luya\tilda\services;
 
 use chemezov\luya\tilda\assets\TildaAsset;
 use chemezov\luya\tilda\base\DownloadAssetException;
+use chemezov\luya\tilda\frontend\Module;
 use chemezov\luya\tilda\helpers\TildaCacheHelper;
 use luya\helpers\FileHelper;
 use TildaTools\Tilda\Objects\Page\ExportedPage;
@@ -115,6 +116,10 @@ class TildaAssetService extends BaseObject
         // Download files
         if (is_array($object->js) && count($object->js) > 0) {
             foreach ($object->js as $asset) {
+                if (Module::getInstance()->ignoreJquery && preg_match('/\/js\/jquery\-(.*)?\.min\.js/', $asset->from)) {
+                    continue;
+                }
+
                 $source = $asset->from;
                 $target = $jsPath . DIRECTORY_SEPARATOR . $asset->to;
 

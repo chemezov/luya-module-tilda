@@ -73,6 +73,8 @@ class Module extends \luya\base\Module
      */
     public string $assetsUrl = '/uploads/tilda';
 
+    public bool $ignoreJquery = false;
+
     /**
      * @param Application|\luya\web\Application|\luya\console\Application $app
      * @return void

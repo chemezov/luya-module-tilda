@@ -19,7 +19,7 @@ class TildaWidget extends Widget
         $pageAssetBundle = $assetService->getPageAsset($this->pageId);
 
         $projectAssetBundle->registerAssetFiles($this->view);
-        $projectAssetBundle->registerAssetFiles($this->view);
+        $pageAssetBundle->registerAssetFiles($this->view);
 
         return $pageAssetBundle->html;
     }
